@@ -1,0 +1,20 @@
+body {
+	background: url(../images/geometry.png);
+}
+
+#jumbo {
+	border: 8px solid #ccff66;
+	background-color: rgba(238, 238, 238, 0.45);
+}
+
+#panel-h-1, #panel-h-2, #submit {
+	background: linear-gradient(to right, #ccff66 0%, #00ffff 100%);
+}
+
+#panel-bod-1, #panel-bod-2 {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+#name-input, #dest-input, #first-input, #freq-input {
+	background-color: rgba(0, 255, 255, 0.1);
+}
