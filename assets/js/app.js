@@ -16,17 +16,30 @@ $("#submit").on("click", function(event){
   event.preventDefault();
 
   var name = $('#name-input').val().trim();
-  console.log(name)
+  var minutesUntil;
   var dest = $('#dest-input').val().trim();
   var firstTrain = $('#first-input').val().trim();
   var frequency = $('#freq-input').val().trim();
   var currentTime = moment();
-  var firstTrainConverted = moment(firstTrain, "HH:mm").subtract(1, "years");
+  var firstTrainConverted = moment(firstTrain, "HH:mm");
+  console.log(firstTrainConverted);
   var diffTime = currentTime.diff(moment(firstTrainConverted), "minutes");
+  console.log(diffTime + "here is diffTime");
+  console.log(moment(firstTrainConverted));
   var tRemainder = diffTime % frequency;
-  var minutesUntil = frequency - tRemainder;
+  var futureDetermination = function() {
+    if (firstTrainConverted > currentTime) { //PROBLEM MUST BE HERE
+      minutesUntil = Math.abs(diffTime) + 1;
+    } else {
+      minutesUntil = frequency - tRemainder;
+    }
+  };
+
+  futureDetermination();
+
   var next = currentTime.add(minutesUntil, "minutes");
-  var nextDisplay = moment(next).format("hh:mm a")
+
+  var nextDisplay = moment(next).format("hh:mm a");
 
   database.ref().push({ 
     trainName: name,
